@@ -20,12 +20,12 @@ export default {
     };
   },
   computed: {
-    searchMovieFiltered() {
-      return this.searchMovie();
+    searchFiltered() {
+      return this.search();
     },
   },
   methods: {
-    searchMovie() {
+    search() {
       const config = {
         params: {
           api_key: this.api_key,
@@ -34,7 +34,7 @@ export default {
       };
 
       axios
-        .get(`https://api.themoviedb.org/3/search/movie`, config)
+        .get(`https://api.themoviedb.org/3/search/multi`, config)
         .then((res) => {
           this.moviesSelected = res.data.results;
         });
