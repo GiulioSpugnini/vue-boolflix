@@ -1,22 +1,26 @@
 <template>
   <li>
     <input
-      @keyup="inputSearch"
-      v-model="query"
+      v-model="newQuery"
       type="text"
       placeholder="Cerca.."
     />
-    <button>Cerca</button>
+    <button @click="inputSearch">Cerca</button>
   </li>
 </template>
 
 <script>
 export default {
   name: "Search",
-  props: ["movies", "query"],
+  props: ['query'],
+  data(){
+    return{
+      newQuery:"",
+    }
+  },
   methods: {
     inputSearch() {
-      this.$emit("input-Search-Text", this.query);
+      this.$emit("input-Search-Text", this.newQuery);
     },
   },
 };

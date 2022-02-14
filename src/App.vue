@@ -1,44 +1,55 @@
 <template>
   <ul>
-    <Search :movies="movies" :query="query"  @input-Search-Text="setSelectedQuery"/>
+    <Search
+      :query="query"
+      @input-Search-Text="setSelectedQuery"
+    />
+    <Card :moviesSelected="moviesSelected" />
   </ul>
 </template>
 
 <script>
-import Search from './components/Search.vue';
-import axios from 'axios';
+import Search from "./components/Search.vue";
+import Card from "./components/Card.vue";
+import axios from "axios";
 export default {
-  components: { Search },
-  name: 'App',
+  components: { Search, Card },
+  name: "App",
   data() {
-    return{
-      movies:[],
-      api_key:"dfe0b56363d3d8cf312014e87a1dc974",
+    return {
+      moviesSelected: [],
+      api_key: "dfe0b56363d3d8cf312014e87a1dc974",
       query: "",
-    }
+    };
   },
-  methods:{
-    searchMovie(){
-      const config={
-        params:{
+  methods: {
+    searchMovie() {
+      const config = {
+        params: {
           api_key: this.api_key,
           query: this.query,
-          language: 'it-IT',
+          language: "it-IT",
         },
-      }
+      };
 
-      axios.get(`https://api.themoviedb.org/3/search/movie`, config).then((res)=>{
-        this.movies=res.data.results;
-      });
+      axios
+        .get(`https://api.themoviedb.org/3/search/movie`, config)
+        .then((res) => {
+          this.moviesSelected = res.data.results;
+        });
     },
-    setSelectedQuery(query){
-      this.query=query;
+    setSelectedQuery(query) {
+      this.query = query;
     },
+  },
+  computed:{
+   searchMovieFiltered(){
+     return this.searchMovie();
+   }
   }
   
-}
+};
 </script>
 
 <style lang="scss">
-
 </style>
