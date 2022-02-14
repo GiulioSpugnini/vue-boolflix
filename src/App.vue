@@ -1,9 +1,6 @@
 <template>
   <ul>
-    <Search
-      :query="query"
-      @input-Search-Text="setSelectedQuery"
-    />
+    <Search :query="query" @input-Search-Text="setSelectedQuery" />
     <Card :moviesSelected="moviesSelected" />
   </ul>
 </template>
@@ -22,13 +19,17 @@ export default {
       query: "",
     };
   },
+  computed: {
+    searchMovieFiltered() {
+      return this.searchMovie();
+    },
+  },
   methods: {
     searchMovie() {
       const config = {
         params: {
           api_key: this.api_key,
           query: this.query,
-          language: "it-IT",
         },
       };
 
@@ -42,12 +43,6 @@ export default {
       this.query = query;
     },
   },
-  computed:{
-   searchMovieFiltered(){
-     return this.searchMovie();
-   }
-  }
-  
 };
 </script>
 
