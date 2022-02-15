@@ -1,5 +1,5 @@
 <template>
-  <figure v-bind:style="{backgroundImage: 'postSrc'}">
+  <figure v-bind:style="{backgroundImage: 'url(' + postSrc + ')'}">
     <ul class="container">
       <li>
         <h2>{{ item.title || item.name }}</h2>
