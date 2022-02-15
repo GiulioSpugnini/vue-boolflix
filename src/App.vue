@@ -1,7 +1,18 @@
 <template>
   <ul>
-    <Search :query="query" @input-Search-Text="setSelectedQuery" />
-    <Card :moviesSelected="moviesSelected" />
+    <Search @input-Search-Text="search" />
+    <h2>MOVIES</h2>
+    <Card
+      v-for="(movie, index) in movies"
+      :key="movie.id || index"
+      :item="movie"
+    />
+    <h2>SERIES</h2>
+    <Card
+      v-for="(serie, index) in series"
+      :key="serie.id || index"
+      :item="serie"
+    />
   </ul>
 </template>
 
@@ -14,33 +25,34 @@ export default {
   name: "App",
   data() {
     return {
-      moviesSelected: [],
+      movies: [],
+      series: [],
+      baseUri: "https://api.themoviedb.org/3",
       api_key: "dfe0b56363d3d8cf312014e87a1dc974",
       query: "",
     };
   },
-  computed: {
-    searchFiltered() {
-      return this.search();
-    },
-  },
+
   methods: {
-    search() {
+    search(term) {
+      if (!term) {
+        this.movies = [];
+        this.series = [];
+        return;
+      }
       const config = {
         params: {
           api_key: this.api_key,
-          query: this.query,
+          query: term,
         },
       };
-
-      axios
-        .get(`https://api.themoviedb.org/3/search/multi`, config)
-        .then((res) => {
-          this.moviesSelected = res.data.results;
-        });
+      this.fetchApi("search/movie", config, "movies");
+      this.fetchApi("search/tv", config, "series");
     },
-    setSelectedQuery(query) {
-      this.query = query;
+    fetchApi(endpoint, config, target) {
+      axios.get(`${this.baseUri}/${endpoint}`, config).then((res) => {
+        this[target] = res.data.results;
+      });
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <li>
-    <input v-model="newQuery" type="text" placeholder="Cerca.." />
+    <input v-model.trim="term" type="text" placeholder="Cerca.." />
     <button @click="inputSearch">Cerca</button>
   </li>
 </template>
@@ -8,15 +8,14 @@
 <script>
 export default {
   name: "Search",
-  props: ["query"],
   data() {
     return {
-      newQuery: "",
+      term: "",
     };
   },
   methods: {
     inputSearch() {
-      this.$emit("input-Search-Text", this.newQuery);
+      this.$emit("input-Search-Text", this.term);
     },
   },
 };
