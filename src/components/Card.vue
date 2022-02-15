@@ -17,7 +17,7 @@
           alt=""
         />
       </div>
-      <h6>Rating: {{ Math.ceil(movie.vote_average) }}</h6>
+      <h6>Rating: {{ Math.ceil(movie.vote_average)/2 }}</h6>
     </li>
   </div>
 </template>
