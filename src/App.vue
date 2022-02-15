@@ -1,23 +1,23 @@
 <template>
   <div>
     <Header @input-Search-Text="search" />
-    <main class="text-center d-flex flex-wrap">
-      <h2 class="col-12">MOVIES</h2>
-
-      <Card
-        class="col-4"
-        v-for="(movie, index) in movies"
-        :key="movie.id || index"
-        :item="movie"
-      />
-
-      <h2 class="col-12">SERIES</h2>
-      <Card
-        class="col-4"
-        v-for="(serie, index) in series"
-        :key="serie.id || index"
-        :item="serie"
-      />
+    <main>
+      <div class="text-center justify-content-between d-flex flex-wrap container">
+        <h2 class="col-12">MOVIES</h2>
+        <Card
+          class="col-4"
+          v-for="(movie, index) in movies"
+          :key="movie.id || index"
+          :item="movie"
+        />
+        <h2 class="col-12">SERIES</h2>
+        <Card
+          class="col-4"
+          v-for="(serie, index) in series"
+          :key="serie.id || index"
+          :item="serie"
+        />
+      </div>
     </main>
   </div>
 </template>

@@ -8,10 +8,11 @@ main {
 }
 
 figure {
-    height: 500px;
+    min-height: 600px;
+    max-width: 400px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 li {
