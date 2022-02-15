@@ -3,12 +3,14 @@
     <Header @input-Search-Text="search" />
     <main class="text-center d-flex flex-wrap">
       <h2 class="col-12">MOVIES</h2>
+
       <Card
         class="col-4"
         v-for="(movie, index) in movies"
         :key="movie.id || index"
         :item="movie"
       />
+
       <h2 class="col-12">SERIES</h2>
       <Card
         class="col-4"
@@ -64,4 +66,7 @@ export default {
 
 <style lang="scss">
 @import "./assets/scss/style.scss";
+// .card{
+//   background-image: url('`http://image.tmdb.org/t/p/w342/${this.item.poster_path}`');
+// }
 </style>

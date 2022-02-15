@@ -1,17 +1,12 @@
 <template>
-  <div class="d-flex justify-content-between container">
-    <div class="col-3">
-      <h2>BOOLFLIX</h2>
-    </div>
-    <div class="col-3">
-      <input
-        @keyup.enter="inputSearch"
-        v-model.trim="term"
-        type="text"
-        placeholder="Cerca.."
-      />
-      <button @click="inputSearch">Cerca</button>
-    </div>
+  <div class="col-3">
+    <input
+      @keyup.enter="inputSearch"
+      v-model.trim="term"
+      type="text"
+      placeholder="Cerca.."
+    />
+    <button @click="inputSearch">Cerca</button>
   </div>
 </template>
 
@@ -31,7 +26,4 @@ export default {
 };
 </script>
 <style scoped lang='scss'>
-h2 {
-  color: #cf0000;
-}
 </style>

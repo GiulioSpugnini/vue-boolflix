@@ -1,19 +1,19 @@
 <template>
-  <ul class="container">
-    <li>
-      <h2>{{ item.title || item.name }}</h2>
-      <figure>
-        <img :src="postSrc" alt="" />
-      </figure>
-      <h3>{{ item.original_title || item.original_name }}</h3>
-      <div>
-        <img v-if="hasFlag" :src="flagSrc" alt="" />
-        <p v-else>Language:</p>
-        {{ item.original_language }}
-      </div>
-      <h6>Rating: {{ Math.ceil(item.vote_average) / 2 }}</h6>
-    </li>
-  </ul>
+  <figure v-bind:style="{backgroundImage: 'postSrc'}">
+    <ul class="container">
+      <li>
+        <h2>{{ item.title || item.name }}</h2>
+
+        <h3>{{ item.original_title || item.original_name }}</h3>
+        <div>
+          <img v-if="hasFlag" :src="flagSrc" alt="" />
+          <p v-else>{{ item.original_language }}</p>
+          
+        </div>
+        <h6>Rating: {{ Math.ceil(item.vote_average) / 2 }}</h6>
+      </li>
+    </ul>
+  </figure>
 </template>
 
 <script>
@@ -40,4 +40,5 @@ export default {
 </script>
 
 <style>
+
 </style>
