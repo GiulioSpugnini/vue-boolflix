@@ -2,7 +2,9 @@
   <div>
     <Header @input-Search-Text="search" />
     <main>
-      <div class="text-center justify-content-between d-flex flex-wrap container">
+      <div
+        class="text-center justify-content-between d-flex flex-wrap container"
+      >
         <h2 class="col-12">MOVIES</h2>
         <Card
           class="col-4"
@@ -66,7 +68,4 @@ export default {
 
 <style lang="scss">
 @import "./assets/scss/style.scss";
-// .card{
-//   background-image: url('`http://image.tmdb.org/t/p/w342/${this.item.poster_path}`');
-// }
 </style>

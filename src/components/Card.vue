@@ -1,6 +1,6 @@
 <template>
-  <figure v-bind:style="{backgroundImage: 'url(' + postSrc + ')'}">
-    <ul class="container">
+  <figure v-bind:style="{ backgroundImage: 'url(' + postSrc + ')' }">
+    <ul class="container text-light">
       <li>
         <h2>{{ item.title || item.name }}</h2>
 
@@ -8,9 +8,13 @@
         <div>
           <img v-if="hasFlag" :src="flagSrc" alt="" />
           <p v-else>{{ item.original_language }}</p>
-          
         </div>
-        <h6>Rating: {{ Math.ceil(item.vote_average) / 2 }}</h6>
+        <h6>
+          Rating: {{setStar}}
+          <i v-for="(star,index) in setStar" :key="index" class="fa-solid fa-star" ></i>
+          <i v-for="(star,index) in 5-setStar" :key="index" class="fa-regular fa-star" ></i>
+          <!-- <i v-for="(setStar,index) in 5" :key="index" class="fa-star" :class="['fa-solid', 'fa-regular']"></i> -->
+        </h6>
       </li>
     </ul>
   </figure>
@@ -35,10 +39,12 @@ export default {
     postSrc() {
       return `http://image.tmdb.org/t/p/w342/${this.item.poster_path}`;
     },
+    setStar() {
+      return Math.ceil(this.item.vote_average/2);
+    },
   },
 };
 </script>
 
 <style>
-
 </style>
