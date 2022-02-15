@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ul class="container">
     <li>
       <h2>{{ item.title || item.name }}</h2>
       <figure>
@@ -7,19 +7,13 @@
       </figure>
       <h3>{{ item.original_title || item.original_name }}</h3>
       <div>
-        
-        <img
-          v-if="hasFlag"
-          :src="flagSrc"
-          alt=""
-        />
+        <img v-if="hasFlag" :src="flagSrc" alt="" />
         <p v-else>Language:</p>
-        {{ item.original_language
-        }}
+        {{ item.original_language }}
       </div>
       <h6>Rating: {{ Math.ceil(item.vote_average) / 2 }}</h6>
     </li>
-  </div>
+  </ul>
 </template>
 
 <script>
@@ -35,7 +29,7 @@ export default {
     flagSrc() {
       return require(`../assets/img/${this.item.original_language}.png`);
     },
-    hasFlag(){
+    hasFlag() {
       return this.flags.includes(this.item.original_language);
     },
     postSrc() {

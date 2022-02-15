@@ -1,28 +1,32 @@
 <template>
-  <ul>
-    <Search @input-Search-Text="search" />
-    <h2>MOVIES</h2>
-    <Card
-      v-for="(movie, index) in movies"
-      :key="movie.id || index"
-      :item="movie"
-    />
-    <h2>SERIES</h2>
-    <Card
-      v-for="(serie, index) in series"
-      :key="serie.id || index"
-      :item="serie"
-    />
-  </ul>
+  <div>
+    <Header @input-Search-Text="search" />
+    <main class="text-center d-flex flex-wrap">
+      <h2 class="col-12">MOVIES</h2>
+      <Card
+        class="col-4"
+        v-for="(movie, index) in movies"
+        :key="movie.id || index"
+        :item="movie"
+      />
+      <h2 class="col-12">SERIES</h2>
+      <Card
+        class="col-4"
+        v-for="(serie, index) in series"
+        :key="serie.id || index"
+        :item="serie"
+      />
+    </main>
+  </div>
 </template>
 
 <script>
-import Search from "./components/Search.vue";
+import Header from "./components/Header.vue";
 import Card from "./components/Card.vue";
 import axios from "axios";
 export default {
-  components: { Search, Card },
   name: "App",
+  components: { Header, Card },
   data() {
     return {
       movies: [],
