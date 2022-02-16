@@ -3,7 +3,7 @@
     <Header @input-Search-Text="search" />
     <main>
       <div
-        class="text-center justify-content-between d-flex flex-wrap container"
+        class="text-center justify-content-evenly d-flex flex-wrap container"
       >
         <h2 class="col-12">MOVIES</h2>
         <Card
