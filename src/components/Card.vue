@@ -5,17 +5,25 @@
     v-bind:style="{ backgroundImage: 'url(' + postSrc + ')' }"
   >
     <div class="w-100 h-100" v-if="isHover" :class="{ hovering: isHover }">
-      <ul class="container text-light">
-        <li class="text-left">
-          <h6>Titolo:{{ item.title || item.name }}</h6>
-          <h6>
-            Titolo originale:{{ item.original_title || item.original_name }}
-          </h6>
-          <div>
-            Lingua:<img v-if="hasFlag" :src="flagSrc" alt="" />
+      <ul class="container col-12 text-light h-100">
+        <li
+          class="
+            d-flex
+            flex-column flex-wrap
+            text-start
+            h-100
+            justify-content-center
+          "
+        >
+          <h4 class="col-4 w-100">Titolo: {{ item.title || item.name }}</h4>
+          <h4 class="col-4 w-100">
+            Titolo originale: {{ item.original_title || item.original_name }}
+          </h4>
+          <div class="col-4 w-100 h6 fs-5">
+            Lingua: <img v-if="hasFlag" :src="flagSrc" alt="" />
             <p v-else>{{ item.original_language }}</p>
           </div>
-          <h6>
+          <h4 class="col-4 w-100">
             Voto:
             <i
               v-for="(vote, index) in 5"
@@ -23,7 +31,8 @@
               class="fa-star"
               :class="index < setStar ? 'fa-solid' : 'fa-regular'"
             ></i>
-          </h6>
+          </h4>
+          <h5>Overview: {{ item.overview }}</h5>
         </li>
       </ul>
     </div>
