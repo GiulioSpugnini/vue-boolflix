@@ -15,15 +15,15 @@
             justify-content-center
           "
         >
-          <h4 class="col-4 w-100">Titolo: {{ item.title || item.name }}</h4>
-          <h4 class="col-4 w-100">
+          <h4 class="w-100">Titolo: {{ item.title || item.name }}</h4>
+          <h4 class="w-100">
             Titolo originale: {{ item.original_title || item.original_name }}
           </h4>
           <div class="col-4 w-100 h6 fs-5">
             Lingua: <img v-if="hasFlag" :src="flagSrc" alt="" />
             <p v-else>{{ item.original_language }}</p>
           </div>
-          <h4 class="col-4 w-100">
+          <h4 class="w-100">
             Voto:
             <i
               v-for="(vote, index) in 5"
@@ -32,7 +32,7 @@
               :class="index < setStar ? 'fa-solid' : 'fa-regular'"
             ></i>
           </h4>
-          <h5>Overview: {{ item.overview }}</h5>
+          <h5 class="overview">Overview: {{ item.overview }}</h5>
         </li>
       </ul>
     </div>
