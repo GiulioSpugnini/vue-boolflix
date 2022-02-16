@@ -11,9 +11,7 @@
         </div>
         <h6>
           Rating: {{setStar}}
-          <i v-for="(star,index) in setStar" :key="index" class="fa-solid fa-star" ></i>
-          <i v-for="(star,index) in 5-setStar" :key="index" class="fa-regular fa-star" ></i>
-          <!-- <i v-for="(setStar,index) in 5" :key="index" class="fa-star" :class="['fa-solid', 'fa-regular']"></i> -->
+          <i v-for="(vote,index) in 5" :key="index" class="fa-star" :class="index<setStar? 'fa-solid':'fa-regular'"></i>
         </h6>
       </li>
     </ul>
